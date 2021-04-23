@@ -16,12 +16,12 @@ export const Container = styled.textarea<ContainerProps>`
   color: #313131;
 
   width: 500px;
-  height: 500px;
+  min-height: 250px;
 
   padding: 1.6rem;
 
-  border: 0.1rem solid #313131;
-  border-radius: 1.5rem;
+  border: 1px solid #313131;
+  border-radius: 15px;
 
   transition: all 0.2s ease-in-out;
 

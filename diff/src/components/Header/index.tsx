@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, ButtonDiff } from './styles';
 
 interface IProps {
   formRef: any;
@@ -10,7 +10,7 @@ const Header: React.FC<IProps> = ({formRef}) => {
   return (
     <Container>
       <h1>Header</h1>
-      <button onClick={()=>formRef.current?.submitForm()}>Diff</button>
+      <ButtonDiff onClick={()=>formRef.current?.submitForm()}>Diff</ButtonDiff>
     </Container>
   );
 };

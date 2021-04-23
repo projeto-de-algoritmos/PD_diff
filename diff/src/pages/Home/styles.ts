@@ -16,3 +16,16 @@ export const StyledForm = styled(Form)`
   align-items: center;
   margin-top: 20px;
 `;
+
+export const Result = styled.div`
+  width: 100%;
+  max-width: 500px;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 0.1rem solid #313131;
+  border-radius: 15px;
+  margin: 20px 0;
+`;

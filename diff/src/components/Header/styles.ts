@@ -8,4 +8,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
+`;
+
+export const ButtonDiff = styled.button`
+  width: 100px;
+  height: 40px;
+  outline: none;
+  border: none;
 `;
