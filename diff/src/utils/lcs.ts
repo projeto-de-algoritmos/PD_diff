@@ -1,14 +1,20 @@
-const lcs = (X: string[], Y:string[], m:number, n:number, dp:number[][]) => {
-  if (m === 0 || n === 0) {
+const lcs = (
+  textOne: string[],
+  textTwo: string[],
+  sizeOne: number,
+  sizeTwo: number,
+  memoization: number[][],
+) => {
+  if (sizeOne === 0 || sizeTwo === 0) {
     return 0;
-  } if (dp[m-1][n-1] !== -1) {
-    return dp[m-1][n-1];
-  } if (X[m-1] === Y[n-1]) {
-    dp[m-1][n-1] = 1 + lcs(X,Y, m-1, n-1, dp);
-    return dp[m-1][n-1];
-  } else { 
-    dp[m-1][n-1] = Math.max(lcs(X, Y, m, n-1, dp), lcs(X, Y, m-1, n, dp));
-    return dp[m-1][n-1];
+  } if (memoization[sizeOne - 1][sizeTwo - 1] !== -1) {
+    return memoization[sizeOne - 1][sizeTwo - 1];
+  } if (textOne[sizeOne - 1] === textTwo[sizeTwo - 1]) {
+    memoization[sizeOne - 1][sizeTwo - 1] = 1 + lcs(textOne, textTwo, sizeOne - 1, sizeTwo - 1, memoization);
+    return memoization[sizeOne - 1][sizeTwo - 1];
+  } else {
+    memoization[sizeOne - 1][sizeTwo - 1] = Math.max(lcs(textOne, textTwo, sizeOne, sizeTwo - 1, memoization), lcs(textOne, textTwo, sizeOne - 1, sizeTwo, memoization));
+    return memoization[sizeOne - 1][sizeTwo - 1];
   }
 }
 

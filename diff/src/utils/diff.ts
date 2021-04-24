@@ -1,24 +1,24 @@
 import IResult from '../models/IResult';
 
 const DIFF = (
-  X: string[],
-  Y: string[],
-  m: number,
-  n: number,
-  dp: number[][],
+  textOne: string[],
+  textTwo: string[],
+  sizeOne: number,
+  sizeTwo: number,
+  memoization: number[][],
   diffArray: IResult[],
 ) => {
-  if (m > 0 && n > 0 && X[m - 1] === Y[n - 1]) {
-    DIFF(X, Y, m - 1, n - 1, dp, diffArray)
-    diffArray.push({ change: "no", content: X[m - 1] })
+  if (sizeOne > 0 && sizeTwo > 0 && textOne[sizeOne - 1] === textTwo[sizeTwo - 1]) {
+    DIFF(textOne, textTwo, sizeOne - 1, sizeTwo - 1, memoization, diffArray)
+    diffArray.push({ change: "no", content: textOne[sizeOne - 1] })
   }
-  else if (n > 0 && (m === 0 || dp[m][n - 1] >= dp[m - 1][n])) {
-    DIFF(X, Y, m, n - 1, dp, diffArray)
-    diffArray.push({ change: "add", content: Y[n - 1] })
+  else if (sizeTwo > 0 && (sizeOne === 0 || memoization[sizeOne][sizeTwo - 1] >= memoization[sizeOne - 1][sizeTwo])) {
+    DIFF(textOne, textTwo, sizeOne, sizeTwo - 1, memoization, diffArray)
+    diffArray.push({ change: "add", content: textTwo[sizeTwo - 1] })
   }
-  else if (m > 0 && (n === 0 || dp[m][n - 1] < dp[m - 1][n])) {
-    DIFF(X, Y, m - 1, n, dp, diffArray)
-    diffArray.push({ change: "sub", content: X[m - 1] })
+  else if (sizeOne > 0 && (sizeTwo === 0 || memoization[sizeOne][sizeTwo - 1] < memoization[sizeOne - 1][sizeTwo])) {
+    DIFF(textOne, textTwo, sizeOne - 1, sizeTwo, memoization, diffArray)
+    diffArray.push({ change: "sub", content: textOne[sizeOne - 1] })
   }
 
   return diffArray;
