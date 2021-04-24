@@ -12,21 +12,27 @@ export const Container = styled.textarea<ContainerProps>`
 
   position: relative;
 
-  background: #ffffff;
-  color: #313131;
+  background-color: #241E2C;
+  color: #fff;
 
   width: 500px;
   min-height: 250px;
 
   padding: 1.6rem;
 
-  border: 1px solid #313131;
-  border-radius: 15px;
+  border: 1px solid #AA2BFF;
+  border-radius: 8px;
 
   transition: all 0.2s ease-in-out;
 
   margin-bottom: 0.8rem;
   outline: none;
+
+  &::placeholder {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+  }
 
   ${(props) =>
     props.isErrored &&
@@ -48,23 +54,4 @@ export const Container = styled.textarea<ContainerProps>`
     css`
       color:   border: 0.1rem solid #e4007d;
     `}
-
-  &::placeholder {
-    color: #1e1e1e;
-  }
-
-  /* textarea {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    justify-content: flex-start;
-    background: transparent;
-    border: 0;
-    font-size: 1.8rem;
-    color: #1e1e1e;
-
-    &::placeholder {
-      color: #1e1e1e;
-    }
-  } */
 `;

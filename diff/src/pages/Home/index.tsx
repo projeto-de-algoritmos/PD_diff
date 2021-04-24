@@ -6,9 +6,8 @@ import IResult from '../../models/IResult';
 
 import { FormHandles } from '@unform/core';
 
-import { Container, StyledForm, Result } from './styles';
+import { Container, StyledForm, Result, ButtonDiff } from './styles';
 
-import Header from '../../components/Header';
 import TextArea from '../../components/TextArea';
 
 const Home: React.FC = () => {
@@ -36,10 +35,10 @@ const Home: React.FC = () => {
 
     auxResult = result.map((palavra, index) => {
       if(palavra.change === 'sub'){
-        return <p key={index} style={{color: 'red'}}>&nbsp;{`${palavra.content}`}</p>;
+        return <p key={index} style={{color: '#C2635A'}}>&nbsp;{`${palavra.content}`}</p>;
       }
       else if(palavra.change === 'add'){
-        return <p key={index} style={{color: 'green'}}>&nbsp;{`${palavra.content}`}</p>;
+        return <p key={index} style={{color: '#97F0A5'}}>&nbsp;{`${palavra.content}`}</p>;
       }
       else {
         return <p key={index}>&nbsp;{`${palavra.content}`}</p>;
@@ -52,15 +51,15 @@ const Home: React.FC = () => {
   }, []);
   return (
     <>
-      <Header formRef={formRef} />
       <Container>
         <StyledForm
           onSubmit={handleSubmit}
           ref={formRef}
         >
           <TextArea name="left" placeholder="Digite algo aqui" />
-          <TextArea name="right" placeholder="Digite algo aqui" />
+          <TextArea name="right" placeholder="Digite algo mais aqui" />
         </StyledForm>
+        <ButtonDiff onClick={()=>formRef.current?.submitForm()}>Diff</ButtonDiff>
         <Result id="result">
           {resultString || 'Digite algo nos campos acima'}
         </Result>
