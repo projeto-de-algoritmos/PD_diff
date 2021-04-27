@@ -22,10 +22,12 @@ export const StyledForm = styled(Form)`
 export const Result = styled.div`
   width: 100%;
   max-width: 500px;
-  min-height: 250px;
+  /* min-height: 250px; */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
 
   border: 1px solid #AA2BFF;
   border-radius: 8px;
